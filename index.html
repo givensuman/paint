@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paint</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  </head>
+  <body>
+    <div id="app">
+
+      <canvas id="paint"></canvas>
+
+      <div id="reset-div">
+        <button id="undo" onClick="undo">
+          <i class="bi bi-arrow-counterclockwise"></i>
+        </button>
+        <button id="clear">
+          <i class="bi bi-trash3"></i>
+        </button>
+      </div>
+
+      <div id="controls-div">
+        <button class="color"></button>
+        <button class="color"></button>
+        <button class="color"></button>
+        <button class="color"></button>
+        <button class="color"></button>
+        <button class="color"></button>
+      </div>
+
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
