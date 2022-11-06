@@ -23,6 +23,7 @@ body, html, #app {
   min-width: 320px;
   min-height: 100vh;
   overflow: hidden;
+  cursor: url('./assets/pencil.png') 0 100, auto;
 }
 
 canvas {
