@@ -23,7 +23,7 @@ body, html, #app {
   min-width: 320px;
   min-height: 100vh;
   overflow: hidden;
-  cursor: url('./assets/pencil.png') 0 100, auto;
+  cursor: none;
 }
 
 canvas {
@@ -60,6 +60,8 @@ canvas {
   bottom: 0;
   left: calc(50% - calc(var(--button-size) * 3));
   pointer-events: none;
+  cursor: pointer;
+  z-index: 2;
 }
 
 .color, .thickness {
@@ -98,6 +100,17 @@ canvas {
 
 .thickness:hover {
   transform: translateY(calc(var(--button-size)/4)) rotate(135deg);
+}
+
+#cursor {
+  position: absolute;
+  top: calc(50% - 100px);
+  left: 50%;
+  pointer-events: none;
+}
+
+#reset-div:hover > #cursor {
+  display: none;
 }
 
 /* .color::after {

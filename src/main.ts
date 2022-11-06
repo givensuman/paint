@@ -129,3 +129,27 @@ colors.forEach((button, idx) => {
         ctx!.strokeStyle = defaultColors[idx]
     })
 })
+
+const cursor = document.getElementById('cursor') as HTMLImageElement
+
+document.addEventListener('mousemove', (e: MouseEvent) => {
+    cursor.style.left = `${e.pageX}px`
+    cursor.style.top = `${e.pageY - cursor.height}px`
+
+    if (e.pageX > canvas.width - cursor.width || e.pageY < cursor.height) {
+        cursor.style.transform = `rotate(180deg) translateY(-${cursor.height}px) translateX(${cursor.width}px)`
+    } else {
+        cursor.style.transform = 'none'
+    }
+})
+
+const resetDiv = document.getElementById('reset-div') as HTMLDivElement
+const controlsDiv = document.getElementById('controls-div') as HTMLDivElement
+
+const showCursor = () => cursor.style.display = 'block'
+const hideCursor = () => cursor.style.display = 'none'
+
+resetDiv.addEventListener('mouseenter', hideCursor)
+resetDiv.addEventListener('mouseleave', showCursor)
+controlsDiv.addEventListener('mouseenter', hideCursor)
+controlsDiv.addEventListener('mouseleave', showCursor)
