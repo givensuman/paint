@@ -58,10 +58,18 @@ canvas {
 #controls-div {
   position: absolute;
   bottom: 0;
-  left: calc(50% - calc(var(--button-size) * 3));
+  // left: calc(50% - calc(var(--button-size) * 3.75));
   cursor: default;
   z-index: 2;
   padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.color, #dropup-toggle {
+  margin: 0 0.1em;
 }
 
 .color, .thickness {
@@ -80,42 +88,58 @@ canvas {
   transform: scale(1.1);
 }
 
-/* .thickness {
-  position: relative;
-  left: var(--button-size);
-  background-color: transparent;
-  box-shadow: none;
-  transform: translateY(calc(var(--button-size)/2)) rotate(135deg);
-  width: fit-content;
-}
-
-.thickness:first-child > img {
-  height: calc(var(--button-size) * 2);
-  width: var(--button-size * 2);
-  position: absolute;
-  left: 0;
-}
-
-.thickness:hover {
-  transform: translateY(calc(var(--button-size)/4)) rotate(135deg);
-} */
-
-#dropup {
+#dropup-toggle {
   height: var(--button-size);
   width: var(--button-size);
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#dropup > div {
+#dropup {
   display: flex;
-  flex-direction: column;
-  background-color: blue;
+  flex-direction: column-reverse;
+  position: absolute;
+  left: 1em;
+  bottom: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: height: 200ms;
 }
 
 .thickness {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1em;
+}
 
+.width {
+  height: 10px;
+  width: 80%;
+  background-color: #01161E;
+  border-radius: 0.25em;
+  transition: height 200ms;
+}
+
+#sm {
+  height: 3px;
+  max-height: 5%;
+}
+#md {
+  height: 6px;
+  max-height: 10%;
+}
+#lg, #toggle-width {
+  height: 12px;
+  max-height: 20%;
+}
+#xl {
+  height: 24px;
+  max-height: 40%;
 }
 
 #cursor {
@@ -128,18 +152,3 @@ canvas {
 #reset-div:hover > #cursor {
   display: none;
 }
-
-/* .color::after {
-  content: '';
-  height: 10%;
-  width: 20%;
-  border: solid 5px white;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  position: absolute;
-  top: 15%;
-  right: 15%;
-  border-radius: 50%;
-  transform: rotate(30deg);
-} */

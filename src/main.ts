@@ -121,15 +121,20 @@ colorControls.forEach((button, idx) => {
 
     button.addEventListener('click', () => {
         ctx!.strokeStyle = colors[idx]
+
+        document.querySelectorAll('.width').forEach(_el => {
+            const el = _el as HTMLDivElement
+            el.style.backgroundColor = colors[idx]
+        })
     })
 })
-
-const showThicknesses = false
-
 
 const thicknesses = [
     3, 6, 12, 24
 ]
+
+let showThickness = false
+// let currThickness = ctx?.lineWidth ?? 12
 const thicknessControls = document.querySelectorAll('.thickness')
 thicknessControls.forEach((_button, idx) => {
     const button = _button as HTMLElement
@@ -139,14 +144,34 @@ thicknessControls.forEach((_button, idx) => {
     button.style.borderRadius = '50%'
 
     button.addEventListener('click', () => {
-        ctx!.lineWidth = thicknesses[idx]
+        ctx!.lineWidth = thicknesses[idx];
+        showThickness = false;
+        // currThickness = thicknesses[idx];
+        (document.getElementById('dropup') as HTMLElement).style.height = "0";
+
+        const toggleWidth = document.getElementById('toggle-width') as HTMLDivElement
+        toggleWidth.style.height = `${thicknesses[idx]}px`
+        toggleWidth.style.maxHeight = `${thicknesses[idx] * 5/3}%`
     })
+})
+
+const dropupToggle = document.getElementById('dropup-toggle') as HTMLButtonElement
+dropupToggle.addEventListener('click', () => {
+    const dropup = document.getElementById('dropup') as HTMLElement
+
+    if (showThickness) {
+        dropup.style.height = "0"
+        showThickness = false
+    } else {
+        dropup.style.height = "auto"
+        showThickness = true
+    }
 })
 
 const cursor = document.getElementById('cursor') as HTMLImageElement
 
 document.addEventListener('mousemove', (e: MouseEvent) => {
-    cursor.style.left = `${e.pageX}px`
+    cursor.style.left = `${e.pageX - 10}px`
     cursor.style.top = `${e.pageY - cursor.height}px`
 
     if (e.pageX > canvas.width - cursor.width || e.pageY < cursor.height) {
