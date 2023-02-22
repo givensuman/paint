@@ -139,10 +139,6 @@ const thicknessControls = document.querySelectorAll('.thickness')
 thicknessControls.forEach((_button, idx) => {
     const button = _button as HTMLElement
 
-    button.style.height = thicknesses[idx].toString()
-    button.style.width = thicknesses[idx].toString()
-    button.style.borderRadius = '50%'
-
     button.addEventListener('click', () => {
         ctx!.lineWidth = thicknesses[idx];
         showThickness = false;
@@ -190,4 +186,4 @@ const hideCursor = () => cursor.style.display = 'none'
 resetDiv.addEventListener('mouseenter', hideCursor)
 resetDiv.addEventListener('mouseleave', showCursor)
 controlsDiv.addEventListener('mouseenter', hideCursor)
-controlsDiv.addEventListener('mouseleave', showCursor)
+// controlsDiv.addEventListener('mouseleave', showCursor)
