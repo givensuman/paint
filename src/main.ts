@@ -7,7 +7,7 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 if (ctx) {
-    ctx.lineWidth = 24
+    ctx.lineWidth = 12
     ctx.lineJoin = 'round'
     ctx.lineCap = 'round'
     ctx.strokeStyle = '#01161E'
@@ -16,12 +16,6 @@ if (ctx) {
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
-
-    if (ctx) {
-        ctx.lineWidth = 24
-        ctx.lineJoin = 'round'
-        ctx.lineCap = 'round'
-    }
 })
 
 let isDrawing = false
@@ -118,15 +112,34 @@ const clear = () => {
 
 document.getElementById('clear')?.addEventListener('click', clear)
 
-const defaultColors = [
+const colors = [
     '#01161E', '#FF595E', '#FFCA3A', '#8AC926', '#1982C4', '#6A4C93'
 ]
-const colors = document.querySelectorAll('.color')
-colors.forEach((button, idx) => {
-    (button as HTMLElement).style.backgroundColor = defaultColors[idx]
+const colorControls = document.querySelectorAll('.color')
+colorControls.forEach((button, idx) => {
+    (button as HTMLElement).style.backgroundColor = colors[idx]
 
     button.addEventListener('click', () => {
-        ctx!.strokeStyle = defaultColors[idx]
+        ctx!.strokeStyle = colors[idx]
+    })
+})
+
+const showThicknesses = false
+
+
+const thicknesses = [
+    3, 6, 12, 24
+]
+const thicknessControls = document.querySelectorAll('.thickness')
+thicknessControls.forEach((_button, idx) => {
+    const button = _button as HTMLElement
+
+    button.style.height = thicknesses[idx].toString()
+    button.style.width = thicknesses[idx].toString()
+    button.style.borderRadius = '50%'
+
+    button.addEventListener('click', () => {
+        ctx!.lineWidth = thicknesses[idx]
     })
 })
 
