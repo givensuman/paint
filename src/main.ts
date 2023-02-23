@@ -186,4 +186,4 @@ const hideCursor = () => cursor.style.display = 'none'
 resetDiv.addEventListener('mouseenter', hideCursor)
 resetDiv.addEventListener('mouseleave', showCursor)
 controlsDiv.addEventListener('mouseenter', hideCursor)
-// controlsDiv.addEventListener('mouseleave', showCursor)
+controlsDiv.addEventListener('mouseleave', showCursor)
